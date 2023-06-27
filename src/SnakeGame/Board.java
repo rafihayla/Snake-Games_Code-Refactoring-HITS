@@ -23,8 +23,8 @@ public class Board extends JPanel implements ActionListener {
 	 */
 	
 	private static final long serialVersionUID = 1L;
-	private final int B_WIDTH = 300;
-    private final int B_HEIGHT = 300;
+	private final int SCREEN_WIDTH = 300;
+    private final int SCREEN_HEIGHT = 300;
     private final int ALL_DOTS = 900;
     private final int DELAY = 140;
 
@@ -55,7 +55,7 @@ public class Board extends JPanel implements ActionListener {
         setBackground(Color.BLACK);
         setFocusable(true);
 
-        setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
+        setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         ambil.gambar();        
         initGame();
     }
@@ -122,9 +122,9 @@ public class Board extends JPanel implements ActionListener {
 
         g.setColor(Color.white);
         g.setFont(small);
-        g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, (B_HEIGHT * 2) /6);
-        g.drawString(scoremsg, (B_WIDTH - metr.stringWidth(scoremsg)) / 2, B_HEIGHT / 2);
-        g.drawString(restart, (B_WIDTH - metr.stringWidth(restart)) / 2, (B_HEIGHT * 2) / 3);
+        g.drawString(msg, (SCREEN_WIDTH - metr.stringWidth(msg)) / 2, (SCREEN_HEIGHT * 2) /6);
+        g.drawString(scoremsg, (SCREEN_WIDTH - metr.stringWidth(scoremsg)) / 2, SCREEN_HEIGHT / 2);
+        g.drawString(restart, (SCREEN_WIDTH - metr.stringWidth(restart)) / 2, (SCREEN_HEIGHT * 2) / 3);
        
         }
         
@@ -138,8 +138,8 @@ public class Board extends JPanel implements ActionListener {
     	
     	g.setColor(Color.white);
     	g.setFont(small);
-    	g.drawString(pause, (B_WIDTH - metr.stringWidth(pause)) / 2, (B_HEIGHT * 2) / 5);
-    	g.drawString(enter, (B_WIDTH - metr.stringWidth(enter)) / 2, (B_HEIGHT * 2) / 4);
+    	g.drawString(pause, (SCREEN_WIDTH - metr.stringWidth(pause)) / 2, (SCREEN_HEIGHT * 2) / 5);
+    	g.drawString(enter, (SCREEN_WIDTH - metr.stringWidth(enter)) / 2, (SCREEN_HEIGHT * 2) / 4);
     }
     
 
@@ -198,20 +198,20 @@ public class Board extends JPanel implements ActionListener {
             }
         }
 
-        if (y[0] >= B_HEIGHT) {
+        if (y[0] >= SCREEN_HEIGHT) {
             y[0] = 0;
         }
 
         if (y[0] < 0) {
-            y[0] = B_HEIGHT;
+            y[0] = SCREEN_HEIGHT;
         }
 
-        if (x[0] >= B_WIDTH) {
+        if (x[0] >= SCREEN_WIDTH) {
             x[0] = 0;
         }
 
         if (x[0] < 0) {
-            x[0] = B_WIDTH;
+            x[0] = SCREEN_WIDTH;
         }
         
         if (!inGame) {
