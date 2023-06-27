@@ -91,40 +91,25 @@ public class Board extends JPanel implements ActionListener {
     }
     
     private void doDrawing(Graphics g) {
-        
         if (inGame) {
-        	
-                if (inPaused) {
-                    pauseGame(g);
-        	}
+            if (inPaused) {
+                pauseGame(g);
+            }
+            
             g.drawImage(loadImages.apple, lokasi.apple_x, lokasi.apple_y, this);
 
             for (int z = 0; z < dots; z++) {
-                if (z == 0) {
-                    g.drawImage(loadImages.head, x[z], y[z], this);
-                } else {
-                    g.drawImage(loadImages.ball, x[z], y[z], this);
-                }
+                g.drawImage((z == 0) ? loadImages.head : loadImages.ball, x[z], y[z], this);
             }
             
             g.drawImage(loadImages.bomb, lokasi.bomb_x, lokasi.bomb_y, this);
 
-            for (int z = 0; z < dots; z++) {
-                if (z == 0) {
-                    g.drawImage(loadImages.head, x[z], y[z], this);
-                } else {
-                    g.drawImage(loadImages.ball, x[z], y[z], this);
-                }
-                
-            }
-
             Toolkit.getDefaultToolkit().sync();
-
         } else {
-
             gameOver(g);
         }        
     }
+
 
     
     private void gameOver(Graphics g) {
