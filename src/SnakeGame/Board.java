@@ -253,84 +253,112 @@ public class Board extends JPanel implements ActionListener {
 
         @Override
         public void keyPressed(KeyEvent e) {
-
-        	// to set the key
+        	
             int key = e.getKeyCode();
 
-            if ((key == KeyEvent.VK_LEFT) && (!rightDirection)) {
-                leftDirection = true;
-                upDirection = false;
-                downDirection = false;
-            }
+            handleDirectionKeys(key);
+            handleSpecialKeys(key);
+            
+        }
 
-            if ((key == KeyEvent.VK_RIGHT) && (!leftDirection)) {
-                rightDirection = true;
-                upDirection = false;
-                downDirection = false;
+        private void handleDirectionKeys(int key) {
+        	
+            if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
+                handleLeftKey();
             }
+            
+            else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
+                handleRightKey();
+            }
+            
+            else if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
+                handleUpKey();
+            }
+            
+            else if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
+                handleDownKey();
+            }
+            
+        }
 
-            if ((key == KeyEvent.VK_UP) && (!downDirection)) {
-                upDirection = true;
-                rightDirection = false;
-                leftDirection = false;
-            }
-
-            if ((key == KeyEvent.VK_DOWN) && (!upDirection)) {
-                downDirection = true;
-                rightDirection = false;
-                leftDirection = false;
-            }
-            
-            if ((key == KeyEvent.VK_A) && (!rightDirection)) {
-                leftDirection = true;
-                upDirection = false;
-                downDirection = false;
-            }
-            
-            if ((key == KeyEvent.VK_D) && (!leftDirection)) {
-                rightDirection = true;
-                upDirection = false;
-                downDirection = false;
-            }
-            
-            if ((key == KeyEvent.VK_W) && (!downDirection)) {
-                upDirection = true;
-                rightDirection = false;
-                leftDirection = false;
-            }
-            
-            if ((key == KeyEvent.VK_S) && (!upDirection)) {
-                downDirection = true;
-                rightDirection = false;
-                leftDirection = false;
-            }
-            
+        private void handleSpecialKeys(int key) {
+        	
             if (key == KeyEvent.VK_ESCAPE) {
-            	timer.stop();
-                inPaused = true;
-                
-            	repaint();
+                handleEscapeKey();
             }
             
-            if (key == KeyEvent.VK_ENTER) {
-                timer.start();
-                inPaused = false;
-                
-                repaint();
-             }
-            //Implementation or Override
-            if (key ==KeyEvent.VK_R){
-                
-                score = 0;
-                dots = 3;
-                repaint();
-                      
-             
+            else if (key == KeyEvent.VK_ENTER) {
+                handleEnterKey();
+            }
+            
+            else if (key == KeyEvent.VK_R) {
+                handleRKey();
+            }
+            
+        }
 
+        private void handleLeftKey() {
+        	
+            if (!rightDirection) {
+                leftDirection = true;
+                upDirection = false;
+                downDirection = false;
+            }
+            
+        }
+
+        private void handleRightKey() {
+        	
+            if (!leftDirection) {
+                rightDirection = true;
+                upDirection = false;
+                downDirection = false;
+            }
+            
+        }
+
+        private void handleUpKey() {
+        	
+            if (!downDirection) {
+                upDirection = true;
+                rightDirection = false;
+                leftDirection = false;
+            }
+            
+        }
+
+        private void handleDownKey() {
+        	
+            if (!upDirection) {
+                downDirection = true;
+                rightDirection = false;
+                leftDirection = false;
+            }
+            
+        }
+
+        private void handleEscapeKey() {
+        	
+            timer.stop();
+            inPaused = true;
+            repaint();
+            
+        }
+
+        private void handleEnterKey() {
+        	
+            timer.start();
+            inPaused = false;
+            repaint();
+            
+        }
+
+        private void handleRKey() {
+        	
+        	new Snake();
+        	
         }
         
     }
-    
-}
     
 }
