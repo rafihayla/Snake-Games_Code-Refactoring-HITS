@@ -176,15 +176,25 @@ public class Board extends JPanel implements ActionListener {
 
 
     private void checkCollision() {
+        checkSnakeCollision();
+        wrapAroundScreen();
+        stopGameIfLost();
+    }
 
-    	// to make snake can go through the border
+    private void checkSnakeCollision() {
         for (int z = dots; z > 0; z--) {
-
             if ((z >= 4) && (x[0] == x[z]) && (y[0] == y[z])) {
                 inGame = false;
             }
         }
+    }
 
+    private void wrapAroundScreen() {
+        wrapVerticalBorders();
+        wrapHorizontalBorders();
+    }
+
+    private void wrapVerticalBorders() {
         if (y[0] >= SCREEN_HEIGHT) {
             y[0] = 0;
         }
@@ -192,7 +202,9 @@ public class Board extends JPanel implements ActionListener {
         if (y[0] < 0) {
             y[0] = SCREEN_HEIGHT;
         }
+    }
 
+    private void wrapHorizontalBorders() {
         if (x[0] >= SCREEN_WIDTH) {
             x[0] = 0;
         }
@@ -200,11 +212,14 @@ public class Board extends JPanel implements ActionListener {
         if (x[0] < 0) {
             x[0] = SCREEN_WIDTH;
         }
-        
+    }
+
+    private void stopGameIfLost() {
         if (!inGame) {
             timer.stop();
         }
     }
+
 
 
 
