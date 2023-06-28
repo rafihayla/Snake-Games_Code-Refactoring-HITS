@@ -25,17 +25,17 @@ public class loadImages {
     
 	public static void loadGambar() {
 
-        ImageIcon iid = new ImageIcon(dot);
-        ball = iid.getImage();
+        ImageIcon imageBall = new ImageIcon(dot);
+        ball = imageBall.getImage();
 
-        ImageIcon iia = new ImageIcon(apel);
-        apple = iia.getImage();
+        ImageIcon imageApple = new ImageIcon(apel);
+        apple = imageApple.getImage();
 
-        ImageIcon iih = new ImageIcon(kepala);
-        head = iih.getImage();
+        ImageIcon imageHead = new ImageIcon(kepala);
+        head = imageHead.getImage();
         
-        ImageIcon iib = new ImageIcon(bom);
-        bomb = iib.getImage();
+        ImageIcon imageBomb = new ImageIcon(bom);
+        bomb = imageBomb.getImage();
     }
 
     static abstract class lokasi {
