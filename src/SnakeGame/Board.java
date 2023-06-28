@@ -165,28 +165,15 @@ public class Board extends JPanel implements ActionListener {
         
 
     private void move() {
-
         for (int z = dots; z > 0; z--) {
             x[z] = x[(z - 1)];
             y[z] = y[(z - 1)];
         }
 
-        if (leftDirection) {
-            x[0] -= loadImages.DOT_SIZE;
-        }
-
-        if (rightDirection) {
-            x[0] += loadImages.DOT_SIZE;
-        }
-
-        if (upDirection) {
-            y[0] -= loadImages.DOT_SIZE;
-        }
-
-        if (downDirection) {
-            y[0] += loadImages.DOT_SIZE;
-        }
+        x[0] += (rightDirection ? loadImages.DOT_SIZE : (leftDirection ? -loadImages.DOT_SIZE : 0));
+        y[0] += (downDirection ? loadImages.DOT_SIZE : (upDirection ? -loadImages.DOT_SIZE : 0));
     }
+
 
     private void checkCollision() {
 
